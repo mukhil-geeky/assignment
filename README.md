@@ -1,2 +1,2 @@
-# assignment_1
-pseudo codes
+# assignments
+1.pseudo codes
