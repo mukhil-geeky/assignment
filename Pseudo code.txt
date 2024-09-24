@@ -68,4 +68,60 @@ Q. FIND THE OCCURANCES OF A CHARACTER IN A GIVEN STRING
     
     
 Q. FIBONACCI SERIES OF A NUMBER
-1.  
+
+1.  START
+2.  CREATE a function Fibonacci(Limit)
+        IF Limit <= 0
+            RETURN []
+        IF Limit == 1
+            RETURN [0]
+        IF Limit == 2   
+            RETURN [1,2]
+        
+        CREATE an array Fibonacci_series
+        ADD zero to Fibonacci_series
+        ADD one to Fibonacci_series
+
+        FOR i=0 to n-1 do
+            next_value = Fibonacci_series[i-1] + Fibonacci_series[i-2]
+            ADD next_value to Fibonacci_series
+
+        RETURN Fibonacci_series
+3.  READ the limit as n
+4.  output = CALL Fibonacci(n)
+5.  PRINT output
+6.  STOP
+
+Q.  LINEAR SEARCH
+
+1.  START
+2.  READ inputs to array 
+3.  READ Element to be searched
+4.  FOR i=0 to length(array) 
+        IF Element == array[i]
+        PRINT Element found
+        BREAK
+5.  PRINT Element not found
+6.  STOP
+
+Q. BINARY SEARCH
+
+
+1.  START
+2.  READ soterd inputs to array
+3.  READ Element to be searched
+4.  Initialize lower_index = 0, last_index = length(array) - 1
+5.  while lower_index <= last_index
+        set mid_index = (lower_index + last_index)//2
+
+        IF array[mid_index] == Element
+            print Element found at (mid_index+1)th position
+            BREAK
+        ELSE IF array(mid_index) < Element 
+            lower_index = mid_index + 1
+        ELSE
+            last_index = mid_index - 1
+
+6.  PRINT Element not found
+7.  STOP
+
