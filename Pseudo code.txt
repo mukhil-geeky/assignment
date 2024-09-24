@@ -20,4 +20,52 @@ Q.  SUM OF SQUARES OF TWO NUMBERS
 6.  PRINT the result
 7.  STOP
 
-Q. 
+Q. REVERSE A NUMBER
+
+1.  START
+2.  READ the input
+3.  Initialize the output variable to zero
+4.  WHILE INPUT>0
+        Temporary variable = input % 10
+        output variable = output variable * 10 + Temporary variable
+        input variable = n // 10
+5.  PRINT output variable
+6.  STOP
+
+Q. REVERSE A STRING
+
+1.  START
+2.  READ the input String as String
+3.  Initialize an empty String as Reverse_String  
+4.  FOR EACH CHARACTER IN String
+        Reverse_String = CHARACTER + Reverse_String
+5.  PRINT Reverse_String
+6.  STOP
+
+Q. FIND GIVEN CHARACTER IN STRING, RETURN TRUE OR FALSE
+
+1.  START
+2.  READ the input String as String
+3.  READ the variable to be checked as Alphabet
+4.  FOR EACH CHARACTER IN String
+        IF CHARACTER == Alphabet
+            PRINT  TRUE
+            BREAK
+5.  PRINT FALSE
+6.  STOP
+
+Q. FIND THE OCCURANCES OF A CHARACTER IN A GIVEN STRING
+
+1.  START
+2.  READ the input string as String
+3.  READ the variable to be counted as Alphabet
+4.  Initialize a count variable as Count = 0
+5.  FOR EACH CHARACTER IN String
+        IF CHARACTER == Alphabet
+        Count = Count+1
+6.  PRINT Count
+7.  STOP
+    
+    
+Q. FIBONACCI SERIES OF A NUMBER
+1.  
