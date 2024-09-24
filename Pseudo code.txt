@@ -1,0 +1,23 @@
+Q. SUM OF THREE NUMBERS
+
+1.  START
+2.  Initialize three variables to take input  
+3.  Initialize an output variable to store result
+4.  INPUT values to each of input variables
+5.  ADD three variable
+6.  STORE the result to output variable
+7.  PRINT result
+8.  STOP
+
+
+Q.  SUM OF SQUARES OF TWO NUMBERS
+
+1.  START
+2.  Initialize two variables to take input
+3.  Initialize an output variable to store result
+4.  SUM SQUARE of two input variables
+5.  STORE the result to output variable
+6.  PRINT the result
+7.  STOP
+
+Q. 
