@@ -1,0 +1,16 @@
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server
+    container_name: mssql-server
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Pass@123  # Change this to a strong password
+    ports:
+      - "1432:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql
+
+volumes:
+  mssql-data:
+
