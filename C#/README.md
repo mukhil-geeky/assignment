@@ -37,3 +37,6 @@ This program calculates the tax based on the user's income according to predefin
 
 ## 12. Input a Character from Console and Display the Sports Name
 This task accepts a character input and displays the corresponding sport name based on the character entered.
+
+## 13. Print the given pattern
+This program prints the pattern given in the question.
