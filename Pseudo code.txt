@@ -140,7 +140,7 @@ Q. BUBBLE SORT
                 array[j+1] = array[j]
                 array[j] = Temporary
                 FLAG = 1
-5.      IF FLAG == 1
+5.      IF FLAG == 0
             BREAK
 6.  PRINT array
 7.  STOP
