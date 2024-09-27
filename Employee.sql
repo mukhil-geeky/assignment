@@ -6,7 +6,7 @@ EmployeeID INT PRIMARY KEY,
 FirstName VARCHAR(50) NOT NULL,
 LastName VARCHAR(50) NOT NULL,
 Department VARCHAR(30),
-Salary FLOAT);
+Salary DECIMAL(10,2));
 
 INSERT INTO  Employee VALUES
 (1,'Gokul','Das','IT',700000),
