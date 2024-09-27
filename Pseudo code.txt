@@ -144,3 +144,18 @@ Q. BUBBLE SORT
             BREAK
 6.  PRINT array
 7.  STOP
+
+
+Q. TOWER OF HANOI
+
+1.  START
+2.  READ the number of disks, n
+3.  FUNCTION Move(n, source, destination, auxiliary):
+        IF n == 1
+            PRINT "Move disk from", source, "to", destination
+        ELSE
+            Move(n-1, source, auxiliary, destination)
+            PRINT "Move disk from", source, "to", destination
+            Move(n-1, auxiliary, destination, source)
+4.  CALL Move(n, 'A', 'C', 'B') (A is the source, C is the destination, B is the auxiliary)
+5.  STOP
