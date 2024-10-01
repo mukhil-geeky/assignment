@@ -523,6 +523,8 @@ WHERE TRY_CONVERT(DATE,EnteredDate) IS NULL;
 
 SELECT EOMONTH(GETDATE()) AS LastDayOfMonth;
 
+
+
 -- 54  From a 'Subscriptions' table, write a query to extend all subscription end dates to the end of their respective months.
 
 
@@ -544,4 +546,160 @@ UPDATE Subscriptions
 SET SubscriptionEndDate = EOMONTH(SubscriptionEndDate);
 
 
+-- 55 Display the current date and time
 
+SELECT (GETDATE()) AS CurrentDate;
+
+-- 56 Compare the results of two different methods to get the current timestamp - are they always the same
+SELECT SYSDATETIME() AS LocalDateTime, GETUTCDATE()  AS UtcDT , DATEDIFF(minute,SYSDATETIMEOFFSET(),GETUTCDATE()) AS DifferenceInMinutes;
+ 
+
+ -- 57 Get the current date and time with higher precision than standard methods.
+ 
+ SELECT SYSDATETIME() AS HigherPrecisionDateTime;
+
+ -- 58 Write a query to insert the current high-precision timestamp into a 'Logs' table
+
+ CREATE TABLE LOGS(
+ LogID INT PRIMARY KEY IDENTITY(1,1),
+ LogMessage VARCHAR(100),
+ LogTimeStamp DATETIME2);
+
+ INSERT INTO Logs(LogMessage,LogTimeStamp) VALUES
+ ('1st Log Time',SYSDATETIME());
+
+ SELECT * FROM Logs;
+
+ -- 59 Display the current UTC date and time with high precision
+
+ SELECT SYSUTCDATETIME() AS HighPrecisionUTC;
+
+ -- 60 Calculate the difference in microseconds between the current local time and UTC time
+
+ SELECT DATEDIFF(MICROSECOND,SYSDATETIME(),SYSUTCDATETIME()) AS DateDiffInMicroseconds;
+
+ -- 61 Get the current date, time, and time zone offset
+
+ SELECT SYSDATETIMEOFFSET() AS DateTimewithOffSet;
+
+ -- 62 From a 'GlobalEvents' table, convert all event times to include time zone offset information
+
+ CREATE TABLE GlobalEvents (
+    EventID INT PRIMARY KEY,
+    EventName VARCHAR(100),
+    EventTime DATETIME
+);
+
+INSERT INTO GlobalEvents (EventID, EventName, EventTime)
+VALUES
+(1, 'Conference', '2024-10-01 10:30:00'),
+(2, 'Webinar', '2024-10-01 14:00:00'),
+(3, 'Team Meeting', '2024-10-01 18:00:00');
+
+SELECT EventID, 
+       EventName, 
+       EventTime AT TIME ZONE 'UTC' AS EventTimeWithOffset
+FROM GlobalEvents;
+
+--63 Extract the month number from the date '2023-12-25.
+
+SELECT MONTH('2023-12-25') AS MonthOfGivenDate;
+
+-- 64 From a 'Sales' table, find the total sales for each month of the previous year
+
+CREATE TABLE Sales3 (
+    SaleID INT PRIMARY KEY,
+    SaleDate DATETIME,
+    TotalAmount DECIMAL(10, 2)
+);
+
+INSERT INTO Sales3 (SaleID, SaleDate, TotalAmount) VALUES
+(1, '2023-01-15', 150.00),
+(2, '2023-02-22', 200.00),
+(3, '2023-03-10', 300.00),
+(4, '2023-01-20', 250.00),
+(5, '2023-02-15', 350.00),
+(6, '2023-03-30', 450.00),
+(7, '2024-01-05', 500.00),  
+(8, '2024-01-15', 600.00);
+
+
+SELECT MONTH(SaleDate) AS MonthsofLastYear, SUM(TotalAmount) AS SalesOfMonth
+FROM Sales3
+WHERE YEAR(SaleDate) = YEAR(GETDATE())-1
+GROUP BY MONTH(SaleDate)
+ORDER BY MONTH(SaleDate); 
+
+-- 65 Extract the day of the month from '2023-03-15'.
+
+SELECT DAY('2023-03-15') AS DayOfGivenDate;
+
+-- 66 Write a query to find all orders from an 'Orders' table that were placed on the 15th day of any month
+
+CREATE TABLE Orders5 (
+    OrderID INT PRIMARY KEY,
+    OrderDate DATETIME,
+    OrderTotal DECIMAL(10, 2)
+);
+
+
+INSERT INTO Orders5 (OrderID, OrderDate, OrderTotal) VALUES
+(1, '2023-01-15', 100.00),
+(2, '2023-02-14', 200.00),
+(3, '2023-03-15', 300.00),
+(4, '2023-04-16', 150.00),
+(5, '2023-05-15', 250.00),
+(6, '2023-06-15', 400.00),
+(7, '2023-07-20', 500.00),
+(8, '2023-08-15', 600.00);
+
+SELECT OrderID,OrderDate,OrderTotal
+FROM Orders5
+WHERE DAY(OrderDate) = '15';
+
+-- 67 Get the name of the month for the date '2023-09-01'
+
+SELECT DATENAME(MONTH,'2023-09-01') AS MonthOfGivenDate;
+
+-- 68 From an 'Events' table, write a query to display the day of the week (in words) for each event date
+
+CREATE TABLE Events (
+    EventID INT PRIMARY KEY,
+    EventDate DATETIME,
+    EventName VARCHAR(100)
+);
+
+INSERT INTO Events (EventID, EventDate, EventName) VALUES
+(1, '2023-09-01', 'Company Meeting'),
+(2, '2023-09-02', 'Product Launch'),
+(3, '2023-09-03', 'Team Building'),
+(4, '2023-09-04', 'Holiday Celebration'),
+(5, '2023-09-05', 'Client Presentation');
+
+SELECT EventId,DATENAME(WEEKDAY,EventDate) AS DayOfWeek,EventName
+FROM Events;
+
+
+-- 69 Create a date for Christmas Day 2023
+
+DECLARE @ChristmasDate DATE;
+SET @ChristmasDate = '2023-12-25';
+SELECT @ChristmasDate AS ChristmasDay;
+
+-- 70 Write a query to convert separate year, month, and day columns from a 'Dates' table into a single DATE column
+-- Create the Dates table
+
+CREATE TABLE Dates (
+    Year INT,
+    Month INT,
+    Day INT
+);
+
+-- 70 Insert sample values into the Dates table
+INSERT INTO Dates (Year, Month, Day) VALUES
+(2023, 1, 15),
+(2022, 12, 25),
+(2024, 7, 4);
+
+SELECT Year,Month,Day,CAST(CONCAT(Year,'-',RIGHT('0'+CAST(Month AS VARCHAR(2)),2) +'-'+RIGHT('0'+CAST(Day AS VARCHAR(2)),2)) AS DATE) AS FullDate
+FROM Dates;
