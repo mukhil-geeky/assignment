@@ -104,7 +104,8 @@ LEFT JOIN  Appointments A ON D.DoctorID = A.PatientID;
 SELECT M.MedicationID,M.MedicationName,M.DosageForm,P.PatientID,P.PatientName
 FROM Medications M
 LEFT JOIN Prescriptions R ON R.MedicationID = M.MedicationID
-LEFT JOIN Patients P ON P.PatientID = R.PatientID;
+LEFT JOIN Patients P ON P.PatientID = R.PatientID
+LEFT JOIN Appointments A ON A.PatientID = P.PatientID;
 
 -- 4. List all possible patient-doctor combinations, regardless of whether an appointment has occurred.
 
@@ -127,6 +128,7 @@ SELECT P.PatientID,P.PatientName,P.DateOfBirth,P.Gender
 FROM Patients P
 LEFT JOIN Prescriptions R ON P.PatientID = R.MedicationID
 LEFT JOIN Medications M ON R.MedicationID = M.MedicationID
+
 WHERE M.MedicationID IS NULL;
 
 -- 7. List all doctors who have appointments in the next week, along with the patients they're scheduled to see.
