@@ -1,0 +1,46 @@
+CREATE DATABASE Movies;
+
+USE Movies;
+
+CREATE TABLE Customers(
+CustomerID INT PRIMARY KEY,
+CustomerName VARCHAR(70) NOT NULL,
+Phone CHAR(10) NOT NULL,
+Email VARCHAR(50) NOT NULL);
+
+CREATE TABLE Theater(
+TheaterID INT PRIMARY KEY,
+TheaterName VARCHAR(30),
+TheaterLocation VARCHAR(100),
+TheaterDescription VARCHAR(200));
+
+CREATE TABLE Movies(
+MovieID INT PRIMARY KEY,
+MovieName VARCHAR(60) NOT NULL,
+TheaterID INT NOT NULL,
+FOREIGN KEY (TheaterID) REFERENCES Theater(TheaterID));
+
+CREATE TABLE DateAndTime(
+ShowID INT PRIMARY KEY,
+MovieID INT NOT NULL,
+MovieDate DATE NOT NULL,
+MovieTime TIME NOT NULL,
+FOREIGN KEY (MovieID) REFERENCES Movies(MovieID) ON DELETE CASCADE);
+
+CREATE TABLE Booking(
+BookingID INT PRIMARY KEY,
+BookingTime TIME NOT NULL,
+BookingDate DATE NOT NULL,
+MovieID INT,
+CustomerID INT,
+TheaterId int,
+FOREIGN KEY (MovieID) REFERENCES Movies(MovieID),
+FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+FOREIGN KEY (TheaterID) REFERENCES Theater(TheaterID));
+
+CREATE TABLE Payment(
+PaymentID INT PRIMARY KEY,
+BookingID INT,
+PaymentType VARCHAR(10),
+PaymentAmount SMALLMONEY,
+FOREIGN KEY (BookingID) REFERENCES Booking(BookingID));
