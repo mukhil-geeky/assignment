@@ -44,3 +44,7 @@ BookingID INT,
 PaymentType VARCHAR(10),
 PaymentAmount SMALLMONEY,
 FOREIGN KEY (BookingID) REFERENCES Booking(BookingID));
+
+
+ALTER TABLE Movies
+ADD MovieRating FLOAT;
