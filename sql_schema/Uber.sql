@@ -1,0 +1,57 @@
+CREATE DATABASE Cab;
+
+USE Cab;
+
+CREATE TABLE Customer(
+CustomerID INT PRIMARY KEY,
+CustomerName VARCHAR(70) NOT NULL,
+CustomerPhone CHAR(10) NOT NULL,
+CustomerEmail VARCHAR(60),
+CustomerAge INT ,
+CustomerGender CHAR(1),
+Address VARCHAR(80));
+
+CREATE TABLE Driver(
+DriverID INT PRIMARY KEY,
+DriverName VARCHAR(70) NOT NULL,
+DriverPhone CHAR(10) NOT NULL,
+DriverEmail VARCHAR(60),
+DriverGender CHAR(1),
+DriverRating FLOAT);
+
+CREATE TABLE Cars(
+CarID INT PRIMARY KEY,
+DriverID INT,
+CarName VARCHAR(20),
+CarModel VARCHAR(20),
+CarDescription VARCHAR(100)
+FOREIGN KEY (DriverID) REFERENCES Driver(DriverID));
+
+CREATE TABLE Booking(
+BookingID INT PRIMARY KEY,
+BookingDate DATE NOT NULL,
+BookingTime TIME NOT NULL,
+CustomerID INT,
+DriverID INT,
+FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
+FOREIGN KEY (DriverID) REFERENCES Driver(DriverID));
+
+
+CREATE TABLE Ride(
+RideID INT PRIMARY KEY,
+BookingID INT,
+RideDate DATE NOT NULL,
+RideTime TIME NOT NULL,
+StartLocation VARCHAR(30) NOT NULL,
+Destination VARCHAR(30) NOT NULL,
+Distance FLOAT,
+FOREIGN KEY (BookingID) REFERENCES Booking(BookingID));
+
+CREATE TABLE Payment(
+PaymentID INT PRIMARY KEY,
+RideID INT,
+PaymentMode VARCHAR(10),
+Amount SMALLMONEY NOT NULL,
+FOREIGN KEY (RideID) REFERENCES Ride(RideID));
+
+
