@@ -1,0 +1,142 @@
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: gray
+    }
+    td:first-child {
+            font-weight: bold;
+            background-color: rgb(203, 203, 203);
+        }
+    ul{
+        list-style-type: none;
+        margin: 0 auto;
+        width: fit-content;
+        text-align: center;
+    }
+    li{
+        border:  solid white;
+        padding: 10px;
+        width: 100px;
+        margin: 3px;
+        text-align: center;
+    }
+    .nested-list {
+            margin-top: 100px; 
+        }
+    .grey1{
+        background-color: rgb(157, 154, 154);
+    }
+    .green1{
+        color: white;
+        background-color: rgb(34, 90, 34);
+    }
+    .grey2{
+        background-color: rgb(119, 115, 115);
+    }
+    .black1{
+        color: white;
+        background-color: black;
+    }
+    .grey3{
+        background-color: rgb(93, 92, 92);
+    }
+    .black2{
+        color: white;
+        background-color: rgb(12, 12, 12);
+    }
+
+ 
+    #alertButton {
+            margin-top: 100px;  
+            margin-bottom: 20px;  
+            padding: 10px 20px;  
+            text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto; 
+    
+        }
+    
+</style>
+
+
+<table>
+    <tr>
+        <th>State</th>
+        <th>Cheif Minister</th>
+        <th>Capital</th>
+    </tr>
+    <tr>
+        <td>Andrha</td>
+        <td>Jagan</td>
+        <td>Amaravati</td>
+    </tr>
+    <tr>
+        <td>Telengana</td>
+        <td>KCR</td>
+        <td>Hyderabad</td>
+    </tr>
+    <tr>
+        <td>Karnataka</td>
+        <td>Bommai</td>
+        <td>Bangalore</td>
+    </tr>
+    <tr>
+        <td>Maharashtra</td>
+        <td>Uddav Thakery</td>
+        <td>Mumbai</td>
+    </tr>
+    <tr>
+        <td>Kerala</td>
+        <td>Pinnarai</td>
+        <td>Trivandrum</td>
+    </tr>      
+        
+
+</table>
+
+<p><a href="https://www.google.co.in/">Link to open google in same tab</a></p>
+<p><a href="https://www.google.co.in/"target ="blank ">Link to open google in new tab</a></p>
+
+
+<ul>
+    <li class="grey1">ONE</li>
+    <LI class="green1">TWO</LI>
+    <LI class="grey2">THREE</LI>
+    <LI class="black1">FOUR</LI>
+    <LI class="grey3">FIVE</LI>
+    <LI class="black2">SIX</LI>
+</ul>
+
+
+
+
+<ul class="nested-list">
+    <li class="grey1"> 1 </li>
+
+        <ul>
+            <li class="grey1">1.1</li>
+            <li class="grey1">1.2</li>
+        </ul>
+    <li class="grey1">2</li>
+        <ul>
+            <li class="grey1">2.1</li>
+            <li class="grey1">2.2</li>
+            <li class="grey1">2.3</li>
+        </ul>
+    
+</ul>
+
+<button id="alertButton">Alert Me</button>
+<script src="hello.js"></script>
+
+
+

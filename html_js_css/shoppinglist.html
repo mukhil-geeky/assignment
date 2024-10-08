@@ -1,0 +1,63 @@
+<style>
+    body {
+        margin: 20px;
+    }
+    #itemInput {
+        width: 200px;
+        padding: 5px;
+        margin-right: 10px;
+        border: none;
+        outline: solid skyblue;
+
+    }
+    #addItemButton {
+        padding: 5px 10px;
+    }
+    ul {
+        margin-top: 20px;
+        padding-left: 20px; /* Indent the list */
+        list-style-type: disc; /* Use bullet points */
+    }
+    .deleteButton {
+        margin-left: 10px; /* Space between item text and delete button */
+        padding: 2px 5px; /* Padding for the button */
+        cursor: pointer; /* Change cursor to pointer on hover */
+    }
+</style>
+<body>
+<h1>My Shopping List</h1>
+<label for="itemInput">Enter the new item:</label>
+<input type="text" id="itemInput">
+<button id="addItemButton">Add Item</button>
+
+<ul id="itemList"></ul>
+
+<script>
+    const addItemButton = document.getElementById('addItemButton');
+    const itemInput = document.getElementById('itemInput');
+    const itemList = document.getElementById('itemList');
+
+    addItemButton.addEventListener('click', () => {
+        const newItem = itemInput.value.trim();
+        if (newItem) {
+            const listItem = document.createElement('li'); 
+            listItem.textContent = newItem; 
+
+            // Create a delete button
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete'; // Button text
+            deleteButton.className = 'deleteButton'; // Add a class for styling
+            deleteButton.addEventListener('click', () => {
+                itemList.removeChild(listItem); // Remove the list item when button is clicked
+            });
+
+            listItem.appendChild(deleteButton); // Append the delete button to the list item
+            itemList.appendChild(listItem); // Append the list item to the list
+            itemInput.value = ''; // Clear the input box
+        } else {
+            alert('Please enter an item.');
+        }
+    });
+</script>
+</body>
+</html>
