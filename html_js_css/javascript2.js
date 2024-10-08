@@ -47,11 +47,9 @@ let originalArray = [
   
   // 2. List the first name of students whose age is greater than  21
 
-  const studentNames =originalArray.filter(student => student.Age > 21);
-  console.log('\nNames of Students who are older than 23 : ');
-  studentNames.forEach(element => {
-    console.log(element.FirstName);
-  });
+  const studentNames =originalArray.filter(student => student.Age > 21).map(student => student.FirstName);
+  console.log(`\nNames of Students who are older than 23 : ${studentNames}`);
+  console.log(studentNames);
 
   //Check whether a student having a first name as Robert is present in the Computer Science Department. The result should be in boolean type
   
@@ -109,29 +107,34 @@ let secondArray = [
 
   //List the movie name along with the actor name of those movies released in the year 2022
 
-  const movieActorName = secondArray.filter(Element => new Date(Element.ReleaseDate).getFullYear() === 2022);
+  const movieActorName = secondArray.filter(Element => new Date(Element.ReleaseDate).getFullYear() === 2022).map(
+    x => ({
+          MovieName : x.MovieName,
+          ActorName : x.ActorName
+    })
+  );
   console.log('\nList the movie name along with the actor name of those movies released in the year 2022');
-  movieActorName.forEach(Element => {
-    console.log(`${Element.MovieName} -- ${Element.ActorName}`);
-  });
+  console.log(movieActorName);
 
 
 //  List the movie names released in the year 2023 where the actor is William Davis
 
-const WilliamDavis2023 = secondArray.filter(Element => Element.ActorName === 'William Davis' && new Date(Element.ReleaseDate) === 2023);
+const WilliamDavis2023 = secondArray.filter(Element => Element.ActorName === 'William Davis' && new Date(Element.ReleaseDate) === 2023)
+.map(x => ({
+  MovieName : x.MovieName
+}));
 console.log('\nList the movie names released in the year 2023 where the actor is William Davis');
-WilliamDavis2023.forEach(Element => {
-  console.log(`${Element.MovieName}`);
-});
+console.log(WilliamDavis2023);
 
 // Retrieve the Actor name and release date of the movie “The Last Stand”
 
-const lastStand = secondArray.filter(x => x.MovieName === 'The Last Stand');
+const lastStand = secondArray.filter(x => x.MovieName === 'The Last Stand')
+.map(x =>({
+  ActorName : x.ActorName,
+  ReleaseDate : x.ReleaseDate
+}));
 console.log('\nRetrieve the Actor name and release date of the movie “The Last Stand”');
-lastStand.forEach(Element => {
-  console.log(`Actor Name : ${Element.MovieName} \nRelease Date : ${Element.ReleaseDate}`);
-});
-
+console.log(lastStand);
 // Check whether there is any movie in the list with actor name “John Doe”
 
 const johnDoe = secondArray.some(x => x.ActorName ==='John Doe');
@@ -244,4 +247,7 @@ if(ChangeDate)
 
 // Create a new array of movie names whose movie name length is greater than 10
 
-const movieLengthGreaterThan8 = secondArray.filter(x => x.MovieName.length > 10);
+const movieLengthGreaterThan10 = secondArray.filter(x => x.MovieName.length > 10).map(x => x.MovieName);
+console.log('\nnew array of movie names whose movie name length is greater than 10');
+console.log(movieLengthGreaterThan10);
+
