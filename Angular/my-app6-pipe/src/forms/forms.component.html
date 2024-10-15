@@ -1,0 +1,55 @@
+
+<form [formGroup]="employee_form" (ngSubmit)="onSubmit()">
+    <label for="first-name">First Name: </label>
+    <input id="first-name" type="text" formControlName="firstname">
+    <div *ngIf ="employee_form.get('firstname')?.invalid && employee_form.get('firstname')?.touched ">Name is required </div>
+    <br>
+    <label for="last-name">Last Name:   </label>
+    <input id="last-name" type="text" formControlName="lastname">
+    <br>
+    <label for="Email">Email:   </label>
+    <input id="email" type="text" formControlName="email">
+    <div  *ngIf = "employee_form.get('firstname')?.invalid && employee_form.get('email')?.touched">Email is required and Should be in proper  format</div>
+    <br>
+    <label for="phone">Phone:   </label>
+    <input id="phone" type="number" formControlName="phone">
+    <div *ngIf = "employee_form.get('phone')?.invalid && employee_form.get('phone')?.touched">Phone Should be minimum of size 10</div>
+    <br>
+
+    <label for="projectname">Project :</label>
+    <select id="projectname" type="string" formControlName="projectname">
+        <option >Choose Project</option>
+        <option *ngFor ="let project of this.projects" >
+            {{project.name | active : project.isActive}}
+        </option>
+    </select>
+
+    <div formGroupName="address">
+        <!-- <h2>Address</h2> -->
+        <label for="address1">Address 1: </label>
+        <input id="address1" type="text" formControlName="address1">
+        <br>
+        <label for="address2">Address 2: </label>
+        <input id="address2" type="text" formControlName="address2">
+        <br>
+        <label for="city">City: </label>
+        <input id="city" type="text" formControlName="city">
+      </div>
+
+    <p>Complete the form to enable button.</p>
+
+  <button type="submit" [disabled]="!employee_form.valid">Submit</button>
+  ...
+  </form>
+
+  <hr>
+
+<div *ngIf = "formsubmited">
+    <p><strong>Name:</strong> {{ employee_form.get("firstname")?.value | uppercase }} {{ employee_form.get('lastname')?.value | uppercase }}</p>
+    <p><strong>Email:</strong> {{ employee_form.get('email')?.value }}</p>
+    <p><strong>Phone Number:</strong> {{ employee_form.get('phone')?.value }}</p>
+    <p><strong>Project Name:</strong> {{ employee_form.get('projectname')?.value }}</p>
+    <p><strong>Address 1:</strong> {{ employee_form.get('address.address1')?.value }}</p>
+    <p><strong>Address 2:</strong> {{ employee_form.get('address.address2')?.value }}</p>
+    <p><strong>City:</strong> {{ employee_form.get('address.city')?.value }}</p>
+</div>
