@@ -1,7 +1,8 @@
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgSelectOption, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivePipe } from '../pipe/active.pipe';
+import { NgLabelTemplateDirective, NgOptionComponent, NgOptionTemplateDirective, NgSelectComponent, NgSelectModule } from '@ng-select/ng-select';
 
 interface address{
   address1 : FormControl<string|null>;
@@ -17,28 +18,38 @@ interface UserForm {
   address: FormGroup<address>;
 }
 
+interface Iprojects {
+  name: string;
+  isActive: boolean;
+}
+
+
 
 @Component({
   selector: 'app-forms',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,UpperCasePipe,ActivePipe],
+  imports: [CommonModule,ReactiveFormsModule,UpperCasePipe,ActivePipe,NgSelectModule,NgSelectComponent,NgLabelTemplateDirective,
+    NgOptionTemplateDirective
+  ],
   templateUrl: './forms.component.html',
   styleUrl: './forms.component.scss'
 })
 export class FormsComponent {
 
- projects =   [
-    { "name": "Hilite", "isActive": true },
-    { "name": "Lulu", "isActive": true },
-    { "name": "Cordova School", "isActive": true },
-    { "name": "Azure Heights Apartments", "isActive": true },
-    { "name": "Greenfield Mall", "isActive": true },
-    { "name": "Pinnacle Corporate Towers", "isActive": true },
-    { "name": "Sunshine Valley Resort", "isActive": true },
-    { "name": "Everest Office Park", "isActive": false },
-    { "name": "Maplewood Villas", "isActive": false },
-    { "name": "Sterling Shopping Complex", "isActive": false }
-  ]
+
+
+ projects : Iprojects[] =   [
+    { name: "Hilite", isActive: true },
+    { name: "Lulu", isActive: true },
+    { name: "Cordova School", isActive: true },
+    { name: "Azure Heights Apartments", isActive: true },
+    { name: "Greenfield Mall", isActive: true },
+    { name: "Pinnacle Corporate Towers", isActive: true },
+    { name: "Sunshine Valley Resort", isActive: true },
+    { name: "Everest Office Park", isActive: false },
+    { name: "Maplewood Villas", isActive: false },
+    { name: "Sterling Shopping Complex", isActive: false }
+  ];
 
   employee_form : FormGroup<UserForm>;
 

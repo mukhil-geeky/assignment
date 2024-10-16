@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { filter } from 'rxjs';
 
 @Pipe({
   name: 'active',
@@ -6,9 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ActivePipe implements PipeTransform {
 
-  transform(value: string, checkvalue : boolean): any {
-    if(checkvalue===true)
-    return value;
+  transform(value: any, isActive: boolean): any {
+    return value.filter((p:any) => p.isActive=== isActive);
   }
 
 }

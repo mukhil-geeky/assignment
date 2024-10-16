@@ -17,12 +17,18 @@
     <br>
 
     <label for="projectname">Project :</label>
-    <select id="projectname" type="string" formControlName="projectname">
+    <ng-select [items]="projects | active : true"
+    bindLabel="name"
+    bindValue="name"
+    placeholder="choose project"
+    formControlName="projectname">
+</ng-select>
+    <!-- <select id="projectname" type="string" formControlName="projectname">
         <option >Choose Project</option>
-        <option *ngFor ="let project of this.projects" >
-            {{project.name | active : project.isActive}}
+        <option *ngFor ="let project of projects | active : false" >
+            {{project.name }}
         </option>
-    </select>
+    </select> -->
 
     <div formGroupName="address">
         <!-- <h2>Address</h2> -->
