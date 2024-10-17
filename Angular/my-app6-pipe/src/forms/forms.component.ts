@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgSelectOption, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivePipe } from '../pipe/active.pipe';
 import { NgLabelTemplateDirective, NgOptionComponent, NgOptionTemplateDirective, NgSelectComponent, NgSelectModule } from '@ng-select/ng-select';
+import { ColorChangeDirective } from '../directive/color-change.directive';
+import { CheckmailDirective } from '../directive/checkmail.directive';
 
 interface address{
   address1 : FormControl<string|null>;
@@ -29,7 +31,7 @@ interface Iprojects {
   selector: 'app-forms',
   standalone: true,
   imports: [CommonModule,ReactiveFormsModule,UpperCasePipe,ActivePipe,NgSelectModule,NgSelectComponent,NgLabelTemplateDirective,
-    NgOptionTemplateDirective
+    NgOptionTemplateDirective,ColorChangeDirective,CheckmailDirective
   ],
   templateUrl: './forms.component.html',
   styleUrl: './forms.component.scss'
@@ -70,7 +72,6 @@ constructor(private em : FormBuilder){
 }
 
 formsubmited = false;
-
 
 onSubmit() {
 

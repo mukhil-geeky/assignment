@@ -51,8 +51,13 @@
   <hr>
 
 <div *ngIf = "formsubmited">
-    <p><strong>Name:</strong> {{ employee_form.get("firstname")?.value | uppercase }} {{ employee_form.get('lastname')?.value | uppercase }}</p>
-    <p><strong>Email:</strong> {{ employee_form.get('email')?.value }}</p>
+    <p appColorChange><strong>Name:</strong> {{ employee_form.get("firstname")?.value | uppercase }} {{ employee_form.get('lastname')?.value | uppercase }}</p>
+    <!-- <div   *ngIf ="employee_form.get('email')?.value?.match('@gmail.com')">
+        <p><strong>Email:</strong> {{ employee_form.get('email')?.value }}</p>
+    </div> -->
+    <div *appCheckmail = "employee_form.get('email')!.value">
+        <p><strong>Email:</strong> {{ employee_form.get('email')?.value }}</p>
+    </div>
     <p><strong>Phone Number:</strong> {{ employee_form.get('phone')?.value }}</p>
     <p><strong>Project Name:</strong> {{ employee_form.get('projectname')?.value }}</p>
     <p><strong>Address 1:</strong> {{ employee_form.get('address.address1')?.value }}</p>
