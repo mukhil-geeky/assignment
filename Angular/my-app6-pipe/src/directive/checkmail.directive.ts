@@ -6,7 +6,7 @@ import { Directive, ElementRef, Input, input, Output, TemplateRef, ViewContainer
 })
 export class CheckmailDirective {
 
-  constructor(private template : TemplateRef<string>, private view : ViewContainerRef) { }
+  
 
  @Input()set appCheckmail(email : string ) {
   if(email?.match('@gmail.com'))
@@ -18,6 +18,7 @@ export class CheckmailDirective {
   }
 
  }
+  constructor(private template : TemplateRef<string>, private view : ViewContainerRef) { }
  
 
 
